@@ -1,0 +1,15 @@
+{
+  "name": "myds",
+  "version": "1.0.0",
+  "description": "I'm create a project to easy use data struct. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "data",
+    "struct"
+  ],
+  "author": "zhoutk",
+  "license": "ISC"
+}
