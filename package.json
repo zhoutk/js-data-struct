@@ -1,10 +1,14 @@
 {
   "name": "myds",
   "version": "1.0.0",
-  "description": "I'm create a project to easy use data struct. ",
+  "description": "I'm create a project to easy use data struct using javascript. ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zhoutk/js-data-struct.git"
   },
   "keywords": [
     "data",
