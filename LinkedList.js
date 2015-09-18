@@ -17,8 +17,13 @@ function LinkedList(){
     this.find = find;
     this.findPre = findPre;
     this.insert = insert;
+    this.add = add;
     this.remove = remove;
     this.display = display;
+}
+
+function add(item){
+    this.insert(item);
 }
 
 function findPre(item){
