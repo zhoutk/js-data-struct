@@ -35,9 +35,11 @@ function findPre(item){
 }
 
 function remove (item){
-    var preNode = this.findPre(item);
-    if(preNode.next !== null){
-        preNode.next = preNode.next.next;
+    if(item) {
+        var preNode = this.findPre(item);
+        if (preNode.next !== null) {
+            preNode.next = preNode.next.next;
+        }
     }
 }
 
@@ -61,9 +63,9 @@ function find(item){
 
 function insert(newElement, item){
     var newNode = new Node(newElement);
-    var finder = this.find(item);
-    var currNode = this.head;
+    var finder = item ? this.find(item) : null;
     if(!finder){
+        var currNode = this.head;
         while(currNode.next){
             currNode = currNode.next;
         }

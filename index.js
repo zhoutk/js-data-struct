@@ -8,9 +8,9 @@
 var LinkedList = require('./LinkedList');
 var llist = new LinkedList();
 
-llist.insert("5");
-llist.insert("8");
-llist.insert("6","5");
+//llist.insert("5");
+//llist.insert("8");
+//llist.insert("6","5");
 llist.add("7");
 llist.remove("6");
 
