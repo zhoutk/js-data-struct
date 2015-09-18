@@ -1,8 +1,8 @@
-# js-data-struct
+##js-data-struct##
 data struct lib use javascript.
 
-list:
+##list:##
 LinkedList
 
-how to use?
+##how to use?##
 samples in index.js
