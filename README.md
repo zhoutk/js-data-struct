@@ -1,5 +1,5 @@
 ##js-data-struct##
-data struct lib use javascript.
+a lib of data struct using javascript.
 
 ##list:##
 - LinkedList
