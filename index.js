@@ -7,10 +7,22 @@
 
 var LinkedList = require('./LinkedList');
 var DList = require('./DoubleLinkedList');
+var Dictionary = require('./Dictionary');
 var llist = new LinkedList();
 var dlist = new DList();
+var dic = new Dictionary();
 
-llist.insert("5");
+dic.add("Mike","123");
+dic.add("David","345");
+dic.add("John","678");
+console.log(dic.length);
+dic.remove("David");
+console.log(dic.length);
+dic.clear();
+console.log(dic.length);
+//console.log("David's extension: " + dic.find("David"));
+dic.showAll();
+/*llist.insert("5");
 llist.insert("6","5");
 llist.add("7");
 llist.remove("6");
@@ -24,6 +36,7 @@ dlist.add("5");
 dlist.insert("6","4");
 
 dlist.dispReverse();
+*/
 
 
 
