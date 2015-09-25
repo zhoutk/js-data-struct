@@ -2,8 +2,8 @@
 data struct lib use javascript.
 
 ##list:##
-LinkedList
-DoubleLinkedList
+- LinkedList
+- DoubleLinkedList
 
 ##how to use?##
 samples in index.js
