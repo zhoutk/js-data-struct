@@ -6,14 +6,24 @@
  ***************************************************************************/
 
 var LinkedList = require('./LinkedList');
+var DList = require('./DoubleLinkedList');
 var llist = new LinkedList();
+var dlist = new DList();
 
-//llist.insert("5");
-//llist.insert("8");
-//llist.insert("6","5");
+llist.insert("5");
+llist.insert("6","5");
 llist.add("7");
 llist.remove("6");
 
-llist.insert("9");
-llist.insert("6","5");
 llist.display();
+
+
+dlist.add("4");
+dlist.insert("8");
+dlist.add("5");
+dlist.insert("6","4");
+
+dlist.dispReverse();
+
+
+

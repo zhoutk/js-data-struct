@@ -1,8 +1,8 @@
 /***************************************************************************
- > File Name        : LinkedList.js
+ > File Name        : DoubleLinkedList.js
  > Author           : zhoutk
  > Mail             : zhoutk@189.cn
- > Create Time      : 2015-09-18 10:23
+ > Create Time      : 2015-09-25 12:05
  ***************************************************************************/
 
 "use strict";
@@ -10,17 +10,26 @@
 function Node(element){
     this.element = element;
     this.next = null;
+    this.previous = null;
 }
 
-function LinkedList(){
+function DoubleLinkedList(){
     this.head = new Node("This is Head Node.");
     this.find = find;
-    this.findPre = findPre;
     this.insert = insert;
     this.add = add;
     this.remove = remove;
     this.display = display;
     this.findLast = findLast;
+    this.dispReverse = dispReverse;
+}
+
+function dispReverse(){
+    var currNode = this.findLast();
+    while(currNode != this.head){
+        console.log(currNode.element);
+        currNode = currNode.previous;
+    }
 }
 
 function findLast(){
@@ -32,25 +41,24 @@ function findLast(){
 }
 
 function add(item){
+    if(item == null)
+        return null;
     this.insert(item);
-}
-
-function findPre(item){
-    var currNode = this.head;
-    while(currNode.next !== null && currNode.next.element !== item){
-        currNode = currNode.next;
-    }
-    return currNode;
 }
 
 function remove (item){
     if(item) {
-        var preNode = this.findPre(item);
-        if(preNode == null)
+        var node = this.find(item);
+        if(node == null)
             return ;
-        if (preNode.next !== null) {
-            preNode.next = preNode.next.next;
-            preNode.next.next = null;
+        if (node.next === null) {
+            node.previous.next = null;
+            node.previous = null;
+        } else{
+            node.previous.next = node.next;
+            node.next.previous = node.previous;
+            node.next = null;
+            node.previous = null;
         }
     }
 }
@@ -78,12 +86,16 @@ function insert(newElement, item){
     var finder = item ? this.find(item) : null;
     if(!finder){
         var last = this.findLast();
+        newNode.previous = last;
         last.next = newNode;
     }
     else{
         newNode.next = finder.next;
+        newNode.previous = finder;
+        finder.next.previous = newNode;
         finder.next = newNode;
     }
 }
 
-module.exports = LinkedList;
+module.exports = DoubleLinkedList;
+
