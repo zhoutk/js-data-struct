@@ -20,6 +20,7 @@ ht.remove("john");
 //ht.display();
 
 console.log(ht.get("marry"));
+console.log(ht.size());
 
 
 

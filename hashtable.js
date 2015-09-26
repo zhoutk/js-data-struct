@@ -11,18 +11,18 @@
 
     var ValuePair = require("./lib/ValuePair");
     var LinkedList = require("./LinkedList");
+    var _size = 0;
 
     function Hashtable(){
         this.table = Object.create(null);
-        this._size = 0;
     }
 
     Hashtable.prototype.isEmpty = function(){
-        return this._size === 0;
+        return _size === 0;
     };
 
     Hashtable.prototype.size = function(){
-        return this._size;
+        return _size;
     };
 
     Hashtable.prototype.remove = function(key){
@@ -36,6 +36,7 @@
                 currNode = currNode.next;
                 if(currNode.element.key == key){
                     this.table[index].remove(currNode.element);
+                    _size--;
                     return true;
                 }
             }
@@ -78,7 +79,7 @@
 
         if(currNode.next == null && currNode.element.value != value){                  //key不存在,加入新值.注意边界值
             this.table[index].add(new ValuePair(key,value));
-            this._size++;
+            _size++;
         }
 
         return this;
