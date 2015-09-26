@@ -26,11 +26,38 @@
     };
 
     Hashtable.prototype.remove = function(key){
+        var index = hashCode(key);
 
+        if(this.table[index] == null){
+            return false;
+        }else{
+            var currNode = this.table[index].head;
+            while(currNode.next){
+                currNode = currNode.next;
+                if(currNode.element.key == key){
+                    this.table[index].remove(currNode.element);
+                    return true;
+                }
+            }
+            return false;
+        }
     };
 
     Hashtable.prototype.get = function(key){
+        var index = hashCode(key);
 
+        if(this.table[index] == null){
+            return null;
+        }else{
+            var currNode = this.table[index].head;
+            while(currNode.next){
+                currNode = currNode.next;
+                if(currNode.element.key == key){
+                    return currNode.element;
+                }
+            }
+            return null;
+        }
     };
 
     Hashtable.prototype.put = function(key, value){

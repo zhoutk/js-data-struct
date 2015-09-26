@@ -50,7 +50,6 @@ function remove (item){
             return ;
         if (preNode.next !== null) {
             preNode.next = preNode.next.next;
-            preNode.next.next = null;
         }
     }
 }

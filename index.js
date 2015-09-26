@@ -16,36 +16,40 @@ var ht = new Hashtable();
 
 ht.put("marry","13301028044");
 ht.put("john","13901028044");
-ht.put("marry","13361028044");
-ht.display();
+ht.remove("john");
+//ht.display();
+
+console.log(ht.get("marry"));
 
 
-/*
-dic.add("Mike","123");
-dic.add("David","345");
-dic.add("John","678");
-console.log(dic.length);
-dic.remove("David");
-console.log(dic.length);
-dic.clear();
-console.log(dic.length);
 
-dic.showAll();
-llist.insert("5");
-llist.insert("6","5");
-llist.add("7");
-llist.remove("6");
+//dic.add("Mike","123");
+//dic.add("David","345");
+//dic.add("John","678");
+//console.log(dic.length);
+//dic.remove("David");
+//console.log(dic.length);
+//dic.clear();
+//console.log(dic.length);
 
-llist.display();
+//dic.showAll();
+
+//llist.insert("5");
+//llist.insert("6","5");
+//llist.add("7");
+//llist.remove("6");
+//llist.add("8");
+//llist.add("9");
+//llist.display();
 
 
-dlist.add("4");
-dlist.insert("8");
-dlist.add("5");
-dlist.insert("6","4");
+//dlist.add("4");
+//dlist.insert("8");
+//dlist.add("5");
+//dlist.insert("6","4");
 
-dlist.dispReverse();
-*/
+//dlist.dispReverse();
+
 
 
 

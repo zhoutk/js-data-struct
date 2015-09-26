@@ -5,6 +5,7 @@ a lib of data struct using javascript.
 - LinkedList
 - DoubleLinkedList
 - Dictionary
+- Hashtable
 
 ##how to use?##
 samples in index.js
