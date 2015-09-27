@@ -5,50 +5,62 @@
  > Create Time      : 2015-09-25 19:58
  ***************************************************************************/
 
-function Dictionary(){
-    this.length = 0;
-    this.datastore = Object.create(null);
-    this.add = add;
-    this.find = find;
-    this.remove = remove;
-    this.showAll = showAll;
-    this.count = count;
-    this.clear = clear;
-}
+(function(){
+    "use strict";
 
-function clear(){
-    for(var key in this.datastore){
+    function Dictionary(){
+        this._size = 0;
+        this.datastore = Object.create(null);
+    }
+
+    Dictionary.prototype.isEmpty = function(){
+        return this._size === 0;
+    };
+
+    Dictionary.prototype.size = function(){
+        return this._size;
+    };
+
+    Dictionary.prototype.clear = function(){
+        for(var key in this.datastore){
+            delete this.datastore[key];
+        }
+        this._size = 0;
+    };
+
+    Dictionary.prototype.add = function(key, value){
+        this.datastore[key] = value;
+        this._size++;
+    };
+
+    Dictionary.prototype.find = function(key){
+        return this.datastore[key];
+    };
+
+    Dictionary.prototype.count = function(){
+        var n = 0;
+        for(var key in this.datastore){
+            n++;
+        }
+        return n;
+    };
+
+    Dictionary.prototype.remove = function(key){
         delete this.datastore[key];
-    }
-    this.length = 0;
-}
+        this._size--;
+    };
 
-function count(){
-    var n = 0;
-    for(var key in this.datastore){
-        n++;
-    }
-    return n;
-}
+    Dictionary.prototype.showAll = function(){
+        for(var key in this.datastore){
+            console.log(key + "->" + this.datastore[key]);
+        }
+    };
 
-function add(key, value){
-    this.datastore[key] = value;
-    this.length++;
-}
+    module.exports = Dictionary;
+})();
 
-function find(key){
-    return this.datastore[key];
-}
 
-function remove(key){
-    delete this.datastore[key];
-    this.length--;
-}
 
-function showAll(){
-    for(var key in this.datastore){
-       console.log(key + "->" + this.datastore[key]);
-    }
-}
 
-module.exports = Dictionary;
+
+

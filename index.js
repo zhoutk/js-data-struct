@@ -26,16 +26,18 @@ var ht2 = new Hashtable();
 
 
 
-//dic.add("Mike","123");
-//dic.add("David","345");
-//dic.add("John","678");
-//console.log(dic.length);
+dic.add("Mike","123");
+dic.add("David","345");
+dic.add("John","678");
+//console.log(dic.size());
 //dic.remove("David");
-//console.log(dic.length);
+dic.add("jake","9909");
+//console.log(dic.size());
 //dic.clear();
-//console.log(dic.length);
+//console.log(dic.size());
 
-//dic.showAll();
+dic.showAll();
+console.log("size is : "+dic.size());
 
 //llist.insert("5");
 //llist.insert("6","5");
@@ -47,14 +49,14 @@ var ht2 = new Hashtable();
 //console.log("size is : "+llist.size());
 
 
-dlist.add("4");
-dlist.insert("8");
-dlist.remove("4");
-dlist.add("5");
-dlist.insert("6","4");
-
-dlist.dispReverse();
-console.log("size is : "+dlist.size());
+//dlist.add("4");
+//dlist.insert("8");
+//dlist.remove("4");
+//dlist.add("5");
+//dlist.insert("6","4");
+//
+//dlist.dispReverse();
+//console.log("size is : "+dlist.size());
 
 
 
