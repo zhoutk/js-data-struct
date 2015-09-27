@@ -5,84 +5,91 @@
  > Create Time      : 2015-09-18 10:23
  ***************************************************************************/
 
-"use strict";
+(function(){
+    "use strict";
 
-function Node(element){
-    this.element = element;
-    this.next = null;
-}
+    var Node = require("./lib/Node");
 
-function LinkedList(){
-    this.head = new Node("This is Head Node.");
-    this.find = find;
-    this.findPre = findPre;
-    this.insert = insert;
-    this.add = add;
-    this.remove = remove;
-    this.display = display;
-    this.findLast = findLast;
-}
-
-function findLast(){
-    var currNode = this.head;
-    while(currNode.next){
-        currNode = currNode.next;
+    function LinkedList(){
+        this._head = new Node("This is Head Node.");
     }
-    return currNode;
-}
 
-function add(item){
-    this.insert(item);
-}
+    LinkedList.prototype.getHead = function(){
+        return this._head;
+    };
 
-function findPre(item){
-    var currNode = this.head;
-    while(currNode.next !== null && currNode.next.element !== item){
-        currNode = currNode.next;
-    }
-    return currNode;
-}
-
-function remove (item){
-    if(item) {
-        var preNode = this.findPre(item);
-        if(preNode == null)
-            return ;
-        if (preNode.next !== null) {
-            preNode.next = preNode.next.next;
+    LinkedList.prototype.display = function(){
+        var currNode = this.head.next;
+        while(currNode){
+            console.log(currNode.element);
+            currNode = currNode.next;
         }
-    }
-}
+    };
 
-function display(){
-    var currNode = this.head.next;
-    while(currNode){
-        console.log(currNode.element);
-        currNode = currNode.next;
-    }
-}
+    LinkedList.prototype.remove = function(item){
+        if(item) {
+            var preNode = this.findPre(item);
+            if(preNode == null)
+                return ;
+            if (preNode.next !== null) {
+                preNode.next = preNode.next.next;
+            }
+        }
+    };
 
-function find(item){
-    if(item == null)
-        return null;
-    var currNode = this.head;
-    while(currNode && currNode.element !== item){
-        currNode = currNode.next;
-    }
-    return currNode;
-}
+    LinkedList.prototype.add = function(item){
+        this.insert(item);
+    };
 
-function insert(newElement, item){
-    var newNode = new Node(newElement);
-    var finder = item ? this.find(item) : null;
-    if(!finder){
-        var last = this.findLast();
-        last.next = newNode;
-    }
-    else{
-        newNode.next = finder.next;
-        finder.next = newNode;
-    }
-}
+    LinkedList.prototype.insert = function(newElement, item){
+        var newNode = new Node(newElement);
+        var finder = item ? this.find(item) : null;
+        if(!finder){
+            var last = this.findLast();
+            last.next = newNode;
+        }
+        else{
+            newNode.next = finder.next;
+            finder.next = newNode;
+        }
+    };
 
-module.exports = LinkedList;
+    /*********************** Utility Functions ********************************/
+
+    LinkedList.prototype.findLast = function(){
+        var currNode = this.getHead();
+        while(currNode.next){
+            currNode = currNode.next;
+        }
+        return currNode;
+    };
+
+    LinkedList.prototype.findPre = function(item){
+        var currNode = this.getHead();
+        while(currNode.next !== null && currNode.next.element !== item){
+            currNode = currNode.next;
+        }
+        return currNode;
+    };
+
+    LinkedList.prototype.find = function(item){
+        if(item == null)
+            return null;
+        var currNode = this.getHead();
+        while(currNode && currNode.element !== item){
+            currNode = currNode.next;
+        }
+        return currNode;
+    };
+
+    module.exports = LinkedList;
+})();
+
+
+
+
+
+
+
+
+

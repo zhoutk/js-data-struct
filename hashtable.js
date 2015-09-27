@@ -11,18 +11,18 @@
 
     var ValuePair = require("./lib/ValuePair");
     var LinkedList = require("./LinkedList");
-    var _size = 0;
 
     function Hashtable(){
         this.table = Object.create(null);
+        this._size = 0;
     }
 
     Hashtable.prototype.isEmpty = function(){
-        return _size === 0;
+        return this._size === 0;
     };
 
     Hashtable.prototype.size = function(){
-        return _size;
+        return this._size;
     };
 
     Hashtable.prototype.remove = function(key){
@@ -31,12 +31,12 @@
         if(this.table[index] == null){
             return false;
         }else{
-            var currNode = this.table[index].head;
+            var currNode = this.table[index].getHead();
             while(currNode.next){
                 currNode = currNode.next;
                 if(currNode.element.key == key){
                     this.table[index].remove(currNode.element);
-                    _size--;
+                    this._size--;
                     return true;
                 }
             }
@@ -50,7 +50,7 @@
         if(this.table[index] == null){
             return null;
         }else{
-            var currNode = this.table[index].head;
+            var currNode = this.table[index].getHead();
             while(currNode.next){
                 currNode = currNode.next;
                 if(currNode.element.key == key){
@@ -68,7 +68,7 @@
             this.table[index] = new LinkedList();
         }
 
-        var currNode = this.table[index].head;
+        var currNode = this.table[index].getHead();
         while(currNode.next){                       //key若已经存在,修改value值为新值
             currNode = currNode.next;
             if(currNode.element.key == key){
@@ -79,7 +79,7 @@
 
         if(currNode.next == null && currNode.element.value != value){                  //key不存在,加入新值.注意边界值
             this.table[index].add(new ValuePair(key,value));
-            _size++;
+            this._size++;
         }
 
         return this;
@@ -87,7 +87,7 @@
 
     Hashtable.prototype.display = function(){
         for(var key in this.table){
-            var currNode = this.table[key].head;
+            var currNode = this.table[key].getHead();
             while(currNode.next){
                 currNode = currNode.next;
                 console.log(currNode.element.toString());

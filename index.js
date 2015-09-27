@@ -13,13 +13,15 @@ var llist = new LinkedList();
 var dlist = new DList();
 var dic = new Dictionary();
 var ht = new Hashtable();
+var ht2 = new Hashtable();
 
 ht.put("marry","13301028044");
 ht.put("john","13901028044");
-ht.remove("john");
-//ht.display();
+ht2.put("john","13901028044");
+//ht.remove("john");
+ht.display();
 
-console.log(ht.get("marry"));
+//console.log(ht.get("marry"));
 console.log(ht.size());
 
 
