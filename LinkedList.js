@@ -8,18 +8,27 @@
 (function(){
     "use strict";
 
-    var Node = require("./lib/Node");
+    var Node = require("./lib/SingleNode");
 
     function LinkedList(){
         this._head = new Node("This is Head Node.");
+        this._size = 0;
     }
+
+    LinkedList.prototype.isEmpty =  function(){
+        return this._size === 0;
+    };
+
+    LinkedList.prototype.size =  function(){
+        return this._size;
+    };
 
     LinkedList.prototype.getHead = function(){
         return this._head;
     };
 
     LinkedList.prototype.display = function(){
-        var currNode = this.head.next;
+        var currNode = this.getHead().next;
         while(currNode){
             console.log(currNode.element);
             currNode = currNode.next;
@@ -33,6 +42,7 @@
                 return ;
             if (preNode.next !== null) {
                 preNode.next = preNode.next.next;
+                this._size--;
             }
         }
     };
@@ -52,6 +62,7 @@
             newNode.next = finder.next;
             finder.next = newNode;
         }
+        this._size++;
     };
 
     /*********************** Utility Functions ********************************/

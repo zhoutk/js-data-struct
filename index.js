@@ -15,14 +15,14 @@ var dic = new Dictionary();
 var ht = new Hashtable();
 var ht2 = new Hashtable();
 
-ht.put("marry","13301028044");
-ht.put("john","13901028044");
-ht2.put("john","13901028044");
-//ht.remove("john");
-ht.display();
-
-//console.log(ht.get("marry"));
-console.log(ht.size());
+//ht.put("marry","13301028044");
+//ht.put("john","13901028044");
+//ht2.put("john","13901028044");
+////ht.remove("john");
+//ht.display();
+//
+////console.log(ht.get("marry"));
+//console.log(ht.size());
 
 
 
@@ -44,14 +44,18 @@ console.log(ht.size());
 //llist.add("8");
 //llist.add("9");
 //llist.display();
+//console.log("size is : "+llist.size());
 
 
-//dlist.add("4");
-//dlist.insert("8");
-//dlist.add("5");
-//dlist.insert("6","4");
+dlist.add("4");
+dlist.insert("8");
+dlist.remove("4");
+dlist.add("5");
+dlist.insert("6","4");
 
-//dlist.dispReverse();
+dlist.dispReverse();
+console.log("size is : "+dlist.size());
+
 
 
 

@@ -5,97 +5,120 @@
  > Create Time      : 2015-09-25 12:05
  ***************************************************************************/
 
-"use strict";
+(function(){
+    "use strict";
+    var Node = require("./lib/DoubleNode");
 
-function Node(element){
-    this.element = element;
-    this.next = null;
-    this.previous = null;
-}
-
-function DoubleLinkedList(){
-    this.head = new Node("This is Head Node.");
-    this.find = find;
-    this.insert = insert;
-    this.add = add;
-    this.remove = remove;
-    this.display = display;
-    this.findLast = findLast;
-    this.dispReverse = dispReverse;
-}
-
-function dispReverse(){
-    var currNode = this.findLast();
-    while(currNode != this.head){
-        console.log(currNode.element);
-        currNode = currNode.previous;
+    function DoubleLinkedList(){
+        this._head = new Node("This is Head Node.");
+        this._size = 0;
     }
-}
 
-function findLast(){
-    var currNode = this.head;
-    while(currNode.next){
-        currNode = currNode.next;
-    }
-    return currNode;
-}
+    DoubleLinkedList.prototype.getHead = function(){
+        return this._head;
+    };
 
-function add(item){
-    if(item == null)
-        return null;
-    this.insert(item);
-}
+    DoubleLinkedList.prototype.isEmpty = function(){
+        return this._size === 0;
+    };
 
-function remove (item){
-    if(item) {
-        var node = this.find(item);
-        if(node == null)
-            return ;
-        if (node.next === null) {
-            node.previous.next = null;
-            node.previous = null;
-        } else{
-            node.previous.next = node.next;
-            node.next.previous = node.previous;
-            node.next = null;
-            node.previous = null;
+    DoubleLinkedList.prototype.size = function(){
+        return this._size;
+    };
+
+    DoubleLinkedList.prototype.findLast = function(){
+        var currNode = this.getHead();
+        while(currNode.next){
+            currNode = currNode.next;
         }
-    }
-}
+        return currNode;
+    };
 
-function display(){
-    var currNode = this.head.next;
-    while(currNode){
-        console.log(currNode.element);
-        currNode = currNode.next;
-    }
-}
+    DoubleLinkedList.prototype.add = function(item){
+        if(item == null)
+            return null;
+        this.insert(item);
+    };
 
-function find(item){
-    if(item == null)
-        return null;
-    var currNode = this.head;
-    while(currNode && currNode.element !== item){
-        currNode = currNode.next;
-    }
-    return currNode;
-}
+    DoubleLinkedList.prototype.remove = function(item){
+        if(item) {
+            var node = this.find(item);
+            if(node == null)
+                return ;
+            if (node.next === null) {
+                node.previous.next = null;
+                node.previous = null;
+            } else{
+                node.previous.next = node.next;
+                node.next.previous = node.previous;
+                node.next = null;
+                node.previous = null;
+            }
+            this._size--;
+        }
+    };
 
-function insert(newElement, item){
-    var newNode = new Node(newElement);
-    var finder = item ? this.find(item) : null;
-    if(!finder){
-        var last = this.findLast();
-        newNode.previous = last;
-        last.next = newNode;
-    }
-    else{
-        newNode.next = finder.next;
-        newNode.previous = finder;
-        finder.next.previous = newNode;
-        finder.next = newNode;
-    }
-}
+    DoubleLinkedList.prototype.find = function(item){
+        if(item == null)
+            return null;
+        var currNode = this.getHead();
+        while(currNode && currNode.element !== item){
+            currNode = currNode.next;
+        }
+        return currNode;
+    };
 
-module.exports = DoubleLinkedList;
+    DoubleLinkedList.prototype.insert = function(newElement, item){
+        var newNode = new Node(newElement);
+        var finder = item ? this.find(item) : null;
+        if(!finder){
+            var last = this.findLast();
+            newNode.previous = last;
+            last.next = newNode;
+        }
+        else{
+            newNode.next = finder.next;
+            newNode.previous = finder;
+            finder.next.previous = newNode;
+            finder.next = newNode;
+        }
+        this._size++;
+    };
+
+    DoubleLinkedList.prototype.dispReverse = function(){
+        var currNode = this.findLast();
+        while(currNode != this.getHead()){
+            console.log(currNode.element);
+            currNode = currNode.previous;
+        }
+    };
+
+    DoubleLinkedList.prototype.display = function(){
+        var currNode = this.getHead().next;
+        while(currNode){
+            console.log(currNode.element);
+            currNode = currNode.next;
+        }
+    };
+
+    module.exports = DoubleLinkedList;
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
