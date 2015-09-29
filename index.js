@@ -9,11 +9,26 @@ var LinkedList = require('./LinkedList');
 var DList = require('./DoubleLinkedList');
 var Dictionary = require('./Dictionary');
 var Hashtable = require('./hashtable');
+var BSTree = require('./BSTree');
 var llist = new LinkedList();
 var dlist = new DList();
 var dic = new Dictionary();
 var ht = new Hashtable();
 var ht2 = new Hashtable();
+var bst = new BSTree();
+
+bst.insert(23);
+bst.insert(45);
+bst.insert(16);
+bst.insert(37);
+bst.insert(3);
+bst.insert(99);
+bst.insert(22);
+bst.insert(67);
+bst.insert(2);
+bst.insert(123);
+
+bst.inOrder(bst.root);
 
 //ht.put("marry","13301028044");
 //ht.put("john","13901028044");
@@ -26,18 +41,18 @@ var ht2 = new Hashtable();
 
 
 
-dic.add("Mike","123");
-dic.add("David","345");
-dic.add("John","678");
-//console.log(dic.size());
-//dic.remove("David");
-dic.add("jake","9909");
-//console.log(dic.size());
-//dic.clear();
-//console.log(dic.size());
-
-dic.showAll();
-console.log("size is : "+dic.size());
+//dic.add("Mike","123");
+//dic.add("David","345");
+//dic.add("John","678");
+////console.log(dic.size());
+////dic.remove("David");
+//dic.add("jake","9909");
+////console.log(dic.size());
+////dic.clear();
+////console.log(dic.size());
+//
+//dic.showAll();
+//console.log("size is : "+dic.size());
 
 //llist.insert("5");
 //llist.insert("6","5");
