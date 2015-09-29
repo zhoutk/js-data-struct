@@ -28,7 +28,10 @@ bst.insert(67);
 bst.insert(2);
 bst.insert(123);
 
-bst.inOrder(bst.root);
+//bst.inOrder(bst.root);
+console.log(bst.getMax());
+
+
 
 //ht.put("marry","13301028044");
 //ht.put("john","13901028044");
