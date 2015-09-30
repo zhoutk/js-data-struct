@@ -6,6 +6,7 @@ a lib of data struct using javascript.
 - DoubleLinkedList
 - Dictionary
 - Hashtable
+- BSTree
 
 ##how to use?##
 samples in index.js
