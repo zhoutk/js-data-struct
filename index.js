@@ -20,16 +20,16 @@ var bst = new BSTree();
 bst.insert(23);
 bst.insert(45);
 bst.insert(16);
+bst.insert(67);
+bst.insert(2);
+bst.insert(123);
 bst.insert(37);
 bst.insert(3);
 bst.insert(99);
 bst.insert(22);
-bst.insert(67);
-bst.insert(2);
-bst.insert(123);
-
-//bst.inOrder(bst.root);
-console.log(bst.getMax());
+//bst.remove(23);
+bst.inOrder(bst.root);
+//console.log(bst.getMax());
 
 
 

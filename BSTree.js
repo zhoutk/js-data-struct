@@ -13,6 +13,51 @@
         this.root = null;
     }
 
+    BSTree.prototype.remove = function(data){
+        if(this.root == null)
+            return false;
+        var currNode = this.root;
+        var parent = null;
+        //注意边界值，如果被删除的是根结点,循环是不进入的,parent为null
+        while(currNode != null && currNode.data != data) {
+            parent = currNode;
+            if(data < currNode.data){
+                currNode = currNode.left;
+            }else{
+                currNode = currNode.right;
+            }
+        }
+        if(currNode == null){
+            return false;
+        }
+        if(currNode.left == null || currNode.right == null){
+            if(parent == null){                 //处理边界值,但左右子树同时存在时,不会出问题
+                this.root = currNode.left == null ? currNode.right : currNode.left;
+            }
+            else if(parent.left == currNode){
+                parent.left = currNode.left == null ? currNode.right : currNode.left;
+            }
+            else{
+                parent.right = currNode.left == null ? currNode.right : currNode.left;
+            }
+        }else{
+            var mid = currNode.right;
+            parent = currNode;
+            while(mid.left != null){
+                parent = mid;
+                mid = mid.left;
+            }
+            currNode.data = mid.data;
+            if(parent.left == mid){
+                parent.left = mid.right;
+            }
+            else{
+                parent.right = mid.right;
+            }
+        }
+        return true;
+    };
+
     BSTree.prototype.find = function(data){
         var currNode = this.root;
         while(currNode != null){
@@ -34,7 +79,7 @@
         while(currNode.left != null){
             currNode = currNode.left;
         }
-        return currNode.show();
+        return currNode.data;
     };
 
     BSTree.prototype.getMax = function(){
@@ -42,20 +87,20 @@
         while(currNode.right != null){
             currNode = currNode.right;
         }
-        return currNode.show();
+        return currNode.data;
     };
 
     BSTree.prototype.postOrder = function(node){
         if(node != null){
             this.postOrder(node.left);
             this.postOrder(node.right);
-            console.log(node.show());
+            console.log(node.data);
         }
     };
 
     BSTree.prototype.preOrder = function(node){
         if(node != null){
-            console.log(node.show());
+            console.log(node.data);
             this.preOrder(node.left);
             this.preOrder(node.right);
         }
@@ -64,7 +109,7 @@
     BSTree.prototype.inOrder = function(node){
         if(node != null){
             this.inOrder(node.left);
-            console.log(node.show());
+            console.log(node.data);
             this.inOrder(node.right);
         }
     };
