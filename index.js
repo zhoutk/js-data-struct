@@ -10,25 +10,33 @@ var DList = require('./DoubleLinkedList');
 var Dictionary = require('./Dictionary');
 var Hashtable = require('./hashtable');
 var BSTree = require('./BSTree');
+var Graph = require('./Graph');
 var llist = new LinkedList();
 var dlist = new DList();
 var dic = new Dictionary();
 var ht = new Hashtable();
 var ht2 = new Hashtable();
 var bst = new BSTree();
+var g = new Graph(5);
 
-bst.insert(23);
-bst.insert(45);
-bst.insert(16);
-bst.insert(67);
-bst.insert(2);
-bst.insert(123);
-bst.insert(37);
-bst.insert(3);
-bst.insert(99);
-bst.insert(22);
-//bst.remove(23);
-bst.inOrder(bst.root);
+g.addEdge(0,1);
+g.addEdge(0,2);
+g.addEdge(1,3);
+g.addEdge(2,4);
+g.display();
+
+//bst.insert(23);
+//bst.insert(45);
+//bst.insert(16);
+//bst.insert(67);
+//bst.insert(2);
+//bst.insert(123);
+//bst.insert(37);
+//bst.insert(3);
+//bst.insert(99);
+//bst.insert(22);
+////bst.remove(23);
+//bst.inOrder(bst.root);
 //console.log(bst.getMax());
 
 
