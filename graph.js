@@ -9,11 +9,41 @@
     "use strict";
     function Graph(v){
         this.vertexs = v;
+        this.vertexList = [];
         this.edges = 0;
         this.adj = Object.create(null);
         this._vertex_marked = [];
         this._edgeTo = [];          //保存可达路径
     }
+
+    //拓扑排序
+    Graph.prototype.topSort = function(){
+        var stack = [];
+        var visited = [];
+        for(var i =0; i < this.vertexs; i++){
+            visited[i] = false;
+        }
+        for(var i = 0; i < this.vertexs; i++){
+            if(visited[i] == false){
+                this.topSortHelper(i, visited, stack);
+            }
+        }
+        var al = stack.pop();
+        while(al != null){
+                console.log(this.vertexList[al]);
+            al = stack.pop();
+        }
+    };
+
+    Graph.prototype.topSortHelper = function(v, visited, stack){
+        visited[v] = true;
+        for(var w in this.adj[v]){
+            if(!visited[this.adj[v][w]]){
+                this.topSortHelper(this.adj[v][w], visited, stack);
+            }
+        }
+        stack.push(v);
+    };
 
     Graph.prototype.initMarked = function(){
         for(var i = 0; i< this.vertexs; i++){

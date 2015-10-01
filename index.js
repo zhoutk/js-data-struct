@@ -17,14 +17,16 @@ var dic = new Dictionary();
 var ht = new Hashtable();
 var ht2 = new Hashtable();
 var bst = new BSTree();
-var g = new Graph(5);
+var g = new Graph(6);
 
-g.addEdge(0,1);
-g.addEdge(0,2);
+g.addEdge(1,2);
+g.addEdge(2,5);
 g.addEdge(1,3);
-g.addEdge(2,4);
-console.log("The shortest path : " + g.pathTo(4));
-
+g.addEdge(1,4);
+g.addEdge(0,1);
+g.vertexList = ["CS1","CS2","Data Structures","Assemble Language","Operation Systems","Algorithms"];
+//console.log("The shortest path : " + g.pathTo(4));
+g.topSort();
 //bst.insert(23);
 //bst.insert(45);
 //bst.insert(16);
