@@ -7,6 +7,7 @@ a lib of data struct using javascript.
 - Dictionary
 - Hashtable
 - BSTree
+- Graph
 
 ##how to use?##
 samples in index.js
