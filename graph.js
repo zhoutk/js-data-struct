@@ -11,7 +11,27 @@
         this.vertexs = v;
         this.edges = 0;
         this.adj = Object.create(null);
+        this._marked = [];
     }
+
+    Graph.prototype.initMarked = function(){
+        for(var i = 0; i< this.vertexs; i++){
+            this._marked[i] = false;
+        }
+    };
+
+    Graph.prototype.dfs = function(v){
+        if(arguments[1] == undefined){
+            this.initMarked();
+        }
+        this._marked[v] = true;
+        console.log("Visited vertex: " + v);
+        for(var w in this.adj[v]){
+            if(!this._marked[this.adj[v][w]]){
+                this.dfs(this.adj[v][w],1);
+            }
+        }
+    };
 
     Graph.prototype.display = function(){
         for(var i = 0; i < this.vertexs; i++){

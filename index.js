@@ -23,7 +23,9 @@ g.addEdge(0,1);
 g.addEdge(0,2);
 g.addEdge(1,3);
 g.addEdge(2,4);
-g.display();
+g.dfs(0);
+console.log("------------------");
+g.dfs(0);
 
 //bst.insert(23);
 //bst.insert(45);
