@@ -11,40 +11,71 @@
         this.vertexs = v;
         this.edges = 0;
         this.adj = Object.create(null);
-        this._marked = [];
+        this._vertex_marked = [];
+        this._edgeTo = [];          //保存可达路径
     }
 
     Graph.prototype.initMarked = function(){
         for(var i = 0; i< this.vertexs; i++){
-            this._marked[i] = false;
+            this._vertex_marked[i] = false;
         }
     };
-    //广度优化遍历
+
+    Graph.prototype.pathTo = function(v){
+        var start = 0;
+        this.bfs(start);
+        if(!this.hasPathTo(v)){
+            return null;
+        }
+        var path = [];
+        for(var i = v; i != start; i = this._edgeTo[i]){
+            path.push(i);
+        }
+        path.push(start);
+        var rs = "";
+        while(path.length > 0){
+            if(path.length > 1){
+                rs += path.pop() + "-";
+            }
+            else{
+                rs += path.pop();
+            }
+        }
+        return rs;
+    };
+
+    Graph.prototype.hasPathTo = function(v){
+        return this._vertex_marked[v];
+    };
+
+    //广度优化遍历,并生成可达路径,为计算无权最短路径提供数据
     Graph.prototype.bfs = function(v){
         this.initMarked();
         var queue = [];
-        this._marked[v] = true;
+        this._vertex_marked[v] = true;
         queue.push(v);
         while(queue.length > 0){
             var cur = queue.shift();
             console.log("Visited vertex: " + cur);
             for(var w in this.adj[cur]){
-                if(!this._marked[this.adj[cur][w]]) {
-                    this._marked[this.adj[cur][w]] = true;
+                if(!this._vertex_marked[this.adj[cur][w]]) {
+                    this._edgeTo[this.adj[cur][w]] = cur;
+                    this._vertex_marked[this.adj[cur][w]] = true;
                     queue.push(this.adj[cur][w]);
                 }
             }
         }
     };
+
     //深度优先遍历
     Graph.prototype.dfs = function(v){
         if(arguments[1] == undefined){
             this.initMarked();
         }
-        this._marked[v] = true;
+        this._vertex_marked[v] = true;
         console.log("Visited vertex: " + v);
         for(var w in this.adj[v]){
-            if(!this._marked[this.adj[v][w]]){
+            if(!this._vertex_marked[this.adj[v][w]]){
                 this.dfs(this.adj[v][w],1);
             }
         }
