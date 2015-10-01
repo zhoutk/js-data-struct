@@ -19,7 +19,24 @@
             this._marked[i] = false;
         }
     };
-
+    //广度优化遍历
+    Graph.prototype.bfs = function(v){
+        this.initMarked();
+        var queue = [];
+        this._marked[v] = true;
+        queue.push(v);
+        while(queue.length > 0){
+            var cur = queue.shift();
+            console.log("Visited vertex: " + cur);
+            for(var w in this.adj[cur]){
+                if(!this._marked[this.adj[cur][w]]) {
+                    this._marked[this.adj[cur][w]] = true;
+                    queue.push(this.adj[cur][w]);
+                }
+            }
+        }
+    };
+    //深度优先遍历
     Graph.prototype.dfs = function(v){
         if(arguments[1] == undefined){
             this.initMarked();
